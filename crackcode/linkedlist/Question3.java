@@ -2,7 +2,6 @@
 pubic class Question3
 {
   public static void main(String[] args) {
-
     Scanner in = new Scanner(System.in);
     int d = in.nextInt();
     Node head = new Node(d);
@@ -11,31 +10,17 @@ pubic class Question3
       d = in.nextInt();
       head.appendToTail(d);
     }
-    System.out.println();
-    //head.output();
-    head.del();
-    head.output();
-    //System.out.println();
-    //head.output();
-    //del(head);
-    //System.out.println();
-    //head.output();
+    deleteNode(head);
   }
   
-  void del()
-  {
-    Node head=this;
-    Node fast=head, slow=head;
-    Node prev=null;
-    while(fast.next!=null)
-    {
-        prev=slow;
-        slow=slow.next;
-        fast=fast.next;
-        if(fast.next!=null)
-          fast=fast.next;
-        //System.out.println(slow.data+" "+fast.data);
+  void boolean deleteNode(Node n) {
+    if(n == null || n.next == null) {
+      return false;
     }
-    prev.next = slow.next;
+    
+    Node next = n.next;
+    n.data = next.data;
+    n.next = next.next;
+    return true;
   }
 }
