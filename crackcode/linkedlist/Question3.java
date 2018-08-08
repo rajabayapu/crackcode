@@ -1,60 +1,5 @@
-import java.util.*;
-
-class Node{
-  Node next;
-  int data;
-
-  Node(int d){
-    data = d;
-    next = null;
-  }
-  Node(){
-    //data =0;
-    Node n =this;
-    n =null;
-  }
-
-  void appendToTail(int d)
-  {
-    Node temp = new Node(d);
-    Node n = this;
-    while(n.next!=null)
-    {
-      n = n.next;
-    }
-    n.next= temp;
-    temp.next=null;
-  }
-
-  void output()
-  {
-    Node temp = this;
-    while(temp!=null)
-    {
-      System.out.println(temp.data);
-      temp = temp.next;
-    }
-  }
-
-  void del()
-  {
-    Node head=this;
-    Node fast=head, slow=head;
-    Node prev=null;
-    while(fast.next!=null)
-    {
-        prev=slow;
-        slow=slow.next;
-        fast=fast.next;
-        if(fast.next!=null)
-          fast=fast.next;
-        //System.out.println(slow.data+" "+fast.data);
-    }
-    prev.next = slow.next;
-  }
-}
-
-class Question3
+// delete a node from single linked list, given access to only that node
+pubic class Question3
 {
   public static void main(String[] args) {
 
@@ -75,5 +20,22 @@ class Question3
     //del(head);
     //System.out.println();
     //head.output();
+  }
+  
+  void del()
+  {
+    Node head=this;
+    Node fast=head, slow=head;
+    Node prev=null;
+    while(fast.next!=null)
+    {
+        prev=slow;
+        slow=slow.next;
+        fast=fast.next;
+        if(fast.next!=null)
+          fast=fast.next;
+        //System.out.println(slow.data+" "+fast.data);
+    }
+    prev.next = slow.next;
   }
 }
