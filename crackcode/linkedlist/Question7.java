@@ -1,40 +1,4 @@
-import java.util.*;
 
-class Node{
-  Node next;
-  int data;
-
-  Node(int d){
-    data = d;
-    next = null;
-  }
-  Node(){
-    //data =0;
-    Node n =this;
-    n =null;
-  }
-
-  void appendToTail(int d)
-  {
-    Node temp = new Node(d);
-    Node n = this;
-    while(n.next!=null)
-    {
-      n = n.next;
-    }
-    n.next= temp;
-  }
-
-  void output()
-  {
-    Node temp = this;
-    while(temp!=null)
-    {
-      System.out.println(temp.data);
-      temp = temp.next;
-    }
-  }
-}
 
 class Question7
 {
