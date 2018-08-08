@@ -16,4 +16,13 @@ Class Node {
     
     n.next = end;
  }
+ 
+ void output() {
+    Node temp = this;
+    while(temp!=null)
+    {
+      System.out.println(temp.data);
+      temp = temp.next;
+    }
+  }
 }
