@@ -1,78 +1,32 @@
-import java.util.*;
-
-class Node{
-  Node next=null;
-  int data;
-
-  Node(int d){
-    data = d;
-    next = null;
-  }
-  Node(){}
-
-  Node appendToHead(int d)
-  {
-    Node temp = new Node(d);
-    Node n = this;
-    if(n==null)
-      return temp;
-    temp.next = n;
-    return temp;
-  }
-
-  void output()
-  {
-    Node temp = this;
-    while(temp!=null)
-    {
-      System.out.print(temp.data+" ");
-      temp = temp.next;
+// partition list based on value
+pubic class Question4 {
+  
+  Node partition(Node n, int x) {
+    Node beforeStart = null;
+    Node afterStart = null;
+    
+    while(n != null) {
+      Node next = n.next;
+      if(n.data < x) {
+          n.next = beforeStart;
+          beforeStart = n;
+      } else {
+          n.next = afterStart;
+          afterStart = n; 
+      }
+      n = next;
     }
-    System.out.println();
-  }
-
-}
-
-class Question4
-{
-  public static void main(String[] args) {
-
-    Scanner in = new Scanner(System.in);
-    Node head1 = new Node();
-    Node head2 = new Node();
-    int d;
-    for(int i=0; i<3; i++)
-    {
-      d = in.nextInt();
-      head1=head1.appendToHead(d);
+    
+    if(beforeStart == null) {
+      return afterStart; 
     }
-    for(int i=0; i<3; i++)
-    {
-      d = in.nextInt();
-      head2=head2.appendToHead(d);
+    
+    Node head = beforeStart;
+    while(beforeStart.next != null) {
+      beforeStart = beforeStart.next;
     }
-    //System.out.println();
-    head1.output();
-    //System.out.println();
-    head2.output();
-    Node newnode = Sum(head1, head2);
-    System.out.println();
-    newnode.output();
+    beforeStart.next = afterStart;
+    return head;
   }
-
-  static Node Sum(Node head1, Node head2)
-  {
-    Node newnode = new Node();
-    while(head1.next!=null)
-    {
-      int sum = head1.data + head1.data;
-      int carry = sum/10;
-      newnode = newnode.appendToHead(sum-carry*10);
-      head1 = head1.next;
-      head2 = head2.next;
-      //System.out.println(sum+" "+carry+" "+(sum-carry*10));
-      //newnode.output();
-    }
-    return newnode;
-  }
+  
 }
