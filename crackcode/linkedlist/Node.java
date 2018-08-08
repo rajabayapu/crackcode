@@ -17,6 +17,24 @@ Class Node {
     n.next = end;
  }
  
+   
+  
+  void deleteNode()
+  {
+    Node head=this;
+    Node fast=head, slow=head;
+    Node prev=null;
+    while(fast.next!=null)
+    {
+        prev=slow;
+        slow=slow.next;
+        fast=fast.next;
+        if(fast.next!=null)
+          fast=fast.next;
+    }
+    prev.next = slow.next;
+  }
+ 
  void output() {
     Node temp = this;
     while(temp!=null)
